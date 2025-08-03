@@ -19,7 +19,13 @@ public class EmployeeQueries {
         youngestMaleEmployeeInDept(employees, "Product Development");
         mostWorkExperience(employees);
         maleAndFemaleEmployees(employees);
+        getDepartmentAndItsEmployees(employees);
 
+    }
+
+    private static void getDepartmentAndItsEmployees(List<Employee> employees) {
+        Map<String, List<String>> deptNameAndEmpNames = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.mapping(Employee::getName, Collectors.toList())));
+        System.out.println(deptNameAndEmpNames);
     }
 
     private static void maleAndFemaleEmployees(List<Employee> employees) {
