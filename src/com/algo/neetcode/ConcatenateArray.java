@@ -7,6 +7,17 @@ public class ConcatenateArray {
         int[] arr = {4, 2, 5, 6};
         int[] arr1 = concatenateArray(arr);
         System.out.println(Arrays.toString(arr1));
+        int[] arr2 = concatenateArrayInOnePass(arr);
+        System.out.println(Arrays.toString(arr2));
+    }
+
+    private static int[] concatenateArrayInOnePass(int[] arr) {
+        int n = arr.length;
+        int[] arr1 = new int[2 * n];
+        for (int i = 0; i < n; i++) {
+            arr1[i] = arr1[i + n] = arr[i];
+        }
+        return arr1;
     }
 
     private static int[] concatenateArray(int[] arr) {
